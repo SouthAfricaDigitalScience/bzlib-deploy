@@ -2,8 +2,7 @@
 module add deploy
 cd ${WORKSPACE}/${NAME}-${VERSION}
 make distclean
-./configure --prefix=${SOFT_DIR}
-make install
+make install PREFIX=${SOFT_DIR}
 mkdir -p modules
 (
 cat <<MODULE_FILE

@@ -1,7 +1,7 @@
 #!/bin/bash -e
 module add ci
 cd ${WORKSPACE}/${NAME}-${VERSION}
-make install
+make install PREFIX=${SOFT_DIR}
 mkdir -p modules
 (
 cat <<MODULE_FILE

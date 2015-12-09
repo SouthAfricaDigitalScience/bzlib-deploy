@@ -26,5 +26,4 @@ else
 fi
 tar xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 cd ${WORKSPACE}/${NAME}-${VERSION}
-./configure --prefix=${SOFT_DIR}
 make
