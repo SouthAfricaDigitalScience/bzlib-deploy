@@ -1,4 +1,5 @@
 #!/bin/bash -e
+. /etc/profile.d/modules.sh
 module add deploy
 cd ${WORKSPACE}/${NAME}-${VERSION}
 make distclean
