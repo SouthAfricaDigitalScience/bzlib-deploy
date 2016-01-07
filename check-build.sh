@@ -2,6 +2,7 @@
 . /etc/profile.d/modules.sh
 module add ci
 cd ${WORKSPACE}/${NAME}-${VERSION}
+
 make install PREFIX=${SOFT_DIR}
 mkdir -p modules
 (

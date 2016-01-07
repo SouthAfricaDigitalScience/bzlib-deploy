@@ -26,4 +26,10 @@ else
 fi
 tar xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 cd ${WORKSPACE}/${NAME}-${VERSION}
-make
+# first, we make the shlib version
+
+make -f Makefile-libbz2_so
+
+# now, make the statically-linked lib
+
+make 
