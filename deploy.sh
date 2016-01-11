@@ -3,7 +3,7 @@
 module add deploy
 cd ${WORKSPACE}/${NAME}-${VERSION}
 make distclean
-make install PREFIX=${SOFT_DIR}
+make -f Makefile-libbz2_so install PREFIX=${SOFT_DIR}
 mkdir -p modules
 (
 cat <<MODULE_FILE
@@ -15,10 +15,10 @@ proc ModulesHelp { } {
 }
 module-whatis "Sets the environment for using $NAME ($VERSION.) See https://github.com/SouthAfricaDigitalScience/bzlib-deploy"
 setenv BZLIB_VERSION $VERSION
-set BZLIB_DIR $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path CPATH ${BZLIB_DIR}/include
-prepend-path LD_LIBRARY_PATH ${BZLIB_DIR}/lib
-prepend-path LD_LIBRARY_PATH ${BZLIB_DIR}/lib64
+setenv BZLIB_DIR $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+prepend-path CPATH $::env(BZLIB_DIR)/include
+prepend-path LD_LIBRARY_PATH $::env(BZLIB_DIR)/lib
+prepend-path LD_LIBRARY_PATH $::env(BZLIB_DIR)/lib64
 MODULE_FILE
 ) > modules/${VERSION}
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
