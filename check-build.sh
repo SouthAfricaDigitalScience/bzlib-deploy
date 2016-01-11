@@ -4,6 +4,9 @@ module add ci
 cd ${WORKSPACE}/${NAME}-${VERSION}
 
 make install PREFIX=${SOFT_DIR}
+cp -f  libbz2.so.${VERSION} ${SOFT_DIR}/lib
+chmod a+r ${SOFT_DIR}/lib/libbz2.so.${VERSION}
+ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
 mkdir -p modules
 (
 cat <<MODULE_FILE

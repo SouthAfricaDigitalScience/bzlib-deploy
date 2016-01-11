@@ -3,7 +3,11 @@
 module add deploy
 cd ${WORKSPACE}/${NAME}-${VERSION}
 make distclean
-make -f Makefile-libbz2_so install PREFIX=${SOFT_DIR}
+make -f Makefile-libbz2_so
+make install PREFIX=${SOFT_DIR}
+cp -f  libbz2.so.${VERSION} ${SOFT_DIR}/lib
+chmod a+r ${SOFT_DIR}/lib/libbz2.so.${VERSION}
+ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
 mkdir -p modules
 (
 cat <<MODULE_FILE
