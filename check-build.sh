@@ -18,7 +18,7 @@ proc ModulesHelp { } {
 }
 module-whatis "Sets the environment for using $NAME ($VERSION.) See https://github.com/SouthAfricaDigitalScience/bzlib-deploy"
 setenv BZLIB_VERSION $VERSION
-set BZLIB_DIR $::env(SOFT_DIR)
+set BZLIB_DIR /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path CPATH ${BZLIB_DIR}/include
 prepend-path LD_LIBRARY_PATH ${BZLIB_DIR}/lib
 prepend-path LD_LIBRARY_PATH ${BZLIB_DIR}/lib64
