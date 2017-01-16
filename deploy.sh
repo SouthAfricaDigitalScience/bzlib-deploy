@@ -7,7 +7,7 @@ make -f Makefile-libbz2_so
 make install PREFIX=${SOFT_DIR}
 cp -f  libbz2.so.${VERSION} ${SOFT_DIR}/lib
 chmod a+r ${SOFT_DIR}/lib/libbz2.so.${VERSION}
-if [ ! ${SOFT_DIR}/lib/libbz2.so ] ; then
+if [ ! -h ${SOFT_DIR}/lib/libbz2.so ] ; then
   ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
 fi
 mkdir -p modules
