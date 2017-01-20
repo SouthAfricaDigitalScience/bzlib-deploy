@@ -23,8 +23,8 @@ setenv BZLIB_VERSION $VERSION
 setenv BZLIB_DIR /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path CPATH ${BZLIB_DIR}/include
 prepend-path LD_LIBRARY_PATH $::env(BZLIB_DIR)/lib
-prepend-path LD_LIBRARY_PATH $::(BZLIB_DIR)/lib64
-prepend-path PATH $(BZLIB_DIR)/bin
+prepend-path LD_LIBRARY_PATH $::env(BZLIB_DIR)/lib64
+prepend-path PATH $::env(BZLIB_DIR)/bin
 MODULE_FILE
 ) > modules/${VERSION}
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
