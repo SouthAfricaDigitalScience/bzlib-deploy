@@ -5,6 +5,10 @@
 
 A repo to contain the scripts and tests for [bzlib](http://www.bzip.org/)
 
+# Dependencies
+
+This project has no dependencies
+
 # Versions
 
 Version 1.0.6 is built and tested
