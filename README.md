@@ -7,7 +7,7 @@ A repo to contain the scripts and tests for [bzlib](http://www.bzip.org/)
 
 # Versions
 
-Version 1.0.6 is built and test
+Version 1.0.6 is built and tested
 
 # Citing
 
