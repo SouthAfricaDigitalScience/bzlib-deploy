@@ -25,7 +25,7 @@ setenv BZLIB_DIR $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$V
 prepend-path CPATH $::env(BZLIB_DIR)/include
 prepend-path LD_LIBRARY_PATH $::env(BZLIB_DIR)/lib
 prepend-path LD_LIBRARY_PATH $::env(BZLIB_DIR)/lib64
-prepend-path PATH $::env(BZLIB_DIR)/path
+prepend-path PATH $::env(BZLIB_DIR)/bin
 MODULE_FILE
 ) > modules/${VERSION}
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
