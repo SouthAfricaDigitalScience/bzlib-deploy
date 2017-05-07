@@ -18,11 +18,13 @@ module add ci
 cd ${WORKSPACE}/${NAME}-${VERSION}
 
 make install PREFIX=${SOFT_DIR}
-cp -f  libbz2.so.${VERSION} ${SOFT_DIR}/lib
-chmod a+r ${SOFT_DIR}/lib/libbz2.so.${VERSION}
-if [ ! -h ${SOFT_DIR}/lib/libbz2.so ] ; then
-  ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
-fi
+make -f Makefile-libbz2_so install PREFIX=${SOFT_DIR}
+
+# cp -f  libbz2.so.${VERSION} ${SOFT_DIR}/lib
+# chmod a+r ${SOFT_DIR}/lib/libbz2.so.${VERSION}
+# if [ ! -h ${SOFT_DIR}/lib/libbz2.so ] ; then
+#   ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
+# fi
 mkdir -p modules
 (
 cat <<MODULE_FILE
@@ -37,7 +39,6 @@ setenv BZLIB_VERSION $VERSION
 setenv BZLIB_DIR /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path CPATH ${BZLIB_DIR}/include
 prepend-path LD_LIBRARY_PATH $::env(BZLIB_DIR)/lib
-prepend-path LD_LIBRARY_PATH $::env(BZLIB_DIR)/lib64
 prepend-path PATH $::env(BZLIB_DIR)/bin
 MODULE_FILE
 ) > modules/${VERSION}
