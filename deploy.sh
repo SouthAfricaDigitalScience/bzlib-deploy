@@ -52,4 +52,4 @@ echo "Checking ${BZLIB_DIR}"
 ls -lht ${BZLBI_DIR}/lib
 ls -lht ${BZLIB_DIR}/bin
 
-echo "LD_LIBRARY_PATH is ${LD_LIBRARY_PATH}
+echo "LD_LIBRARY_PATH is ${LD_LIBRARY_PATH}"
