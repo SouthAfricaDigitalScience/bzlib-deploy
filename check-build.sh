@@ -18,13 +18,14 @@ module add ci
 cd ${WORKSPACE}/${NAME}-${VERSION}
 
 make install PREFIX=${SOFT_DIR}
-make -f Makefile-libbz2_so install PREFIX=${SOFT_DIR}
+make -f Makefile-libbz2_so
 
-# cp -f  libbz2.so.${VERSION} ${SOFT_DIR}/lib
-# chmod a+r ${SOFT_DIR}/lib/libbz2.so.${VERSION}
-# if [ ! -h ${SOFT_DIR}/lib/libbz2.so ] ; then
-#   ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
-# fi
+cp -f  libbz2.so.${VERSION} ${SOFT_DIR}/lib
+chmod a+r ${SOFT_DIR}/lib/libbz2.so.${VERSION}
+if [ ! -h ${SOFT_DIR}/lib/libbz2.so ] ; then
+  ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
+fi
+
 mkdir -p modules
 (
 cat <<MODULE_FILE
@@ -47,3 +48,8 @@ cp modules/${VERSION} ${LIBRARIES}/${NAME}
 module avail
 module add ${NAME}
 which bzip2
+echo "Checking ${BZLIB_DIR}"
+ls -lht ${BZLBI_DIR}/lib
+ls -lht ${BZLIB_DIR}/bin
+
+echo "LD_LIBRARY_PATH is ${LD_LIBRARY_PATH}"
