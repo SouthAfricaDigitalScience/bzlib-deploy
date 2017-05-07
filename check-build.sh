@@ -24,6 +24,7 @@ cp -f  libbz2.so.${VERSION} ${SOFT_DIR}/lib
 chmod a+r ${SOFT_DIR}/lib/libbz2.so.${VERSION}
 if [ ! -h ${SOFT_DIR}/lib/libbz2.so ] ; then
   ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
+  ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so.1.0
 fi
 
 mkdir -p modules
