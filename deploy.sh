@@ -25,6 +25,7 @@ if [ ! -h ${SOFT_DIR}/lib/libbz2.so ] ; then
   ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so
   ln -s ${SOFT_DIR}/lib/libbz2.so.${VERSION} ${SOFT_DIR}/lib/libbz2.so.1.0
 fi
+
 mkdir -p modules
 (
 cat <<MODULE_FILE
@@ -51,4 +52,4 @@ echo "Checking ${BZLIB_DIR}"
 ls -lht ${BZLBI_DIR}/lib
 ls -lht ${BZLIB_DIR}/bin
 
-echo "LD_LIBRARY_PATH is ${LD_LIBRARY_PATH
+echo "LD_LIBRARY_PATH is ${LD_LIBRARY_PATH}
