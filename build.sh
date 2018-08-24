@@ -17,7 +17,7 @@
 # boost has a different naming convention to most, for it's source tarballs. Instead of using x.y.z it uses x_y_z
 # We have to change the name of the tarbal then, later
 module add ci
-SOURCE_FILE=${NAME}-${VERSION}.tar.gz
+SOURCE_FILE=${NAME}-${VERSION}.tar.bz2
 mkdir -p ${WORKSPACE}
 mkdir -p ${SOFT_DIR}
 mkdir -p ${SRC_DIR}
@@ -26,7 +26,7 @@ mkdir -p ${SRC_DIR}
 if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ] ; then
   touch  ${SRC_DIR}/${SOURCE_FILE}.lock
   echo "tarball's not here ! let's get it"
-  wget  http://www.bzip.org/${VERSION}/${SOURCE_FILE} -O ${SRC_DIR}/${SOURCE_FILE}
+  wget  https://snapshot.debian.org/archive/debian/20111204T160411Z/pool/main/b/bzip2/bzip2_1.0.6.orig.tar.bz2  -O ${SRC_DIR}/${SOURCE_FILE}
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
@@ -38,7 +38,7 @@ elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
 else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
-tar xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
+tar xfj ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 cd ${WORKSPACE}/${NAME}-${VERSION}
 # first, we make the shlib version
 make -f Makefile-libbz2_so
